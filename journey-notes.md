@@ -209,7 +209,7 @@ spec:
     ports:
     - containerPort: 27017
   - name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.6.2-amd64
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.6.2
     ports:
     - containerPort: 9200
     - containerPort: 9300
@@ -238,7 +238,7 @@ It seems that for elasticsearch image, the tag must be specified and we cannot u
 Mar 19 07:44:59 kind-worker containerd[236]: time="2023-03-19T07:44:59.054587600Z" level=error msg="PullImage \"elasticsearch:8.2.6\" failed" error="rpc error: code = NotFound desc = failed to pull and unpack image \"docker.io/library/elasticsearch:8.2.6\": failed to resolve reference \"docker.io/library/elasticsearch:8.2.6\": docker.io/library/elasticsearch:8.2.6: not found"
 
 ```
-so I used `docker.elastic.co/elasticsearch/elasticsearch:8.6.2-amd64` instead as showed in [here](https://www.docker.elastic.co/r/elasticsearch).
+so I used `docker.elastic.co/elasticsearch/elasticsearch:8.6.2` instead as showed in [here](https://www.docker.elastic.co/r/elasticsearch).
 
 Now I got another error: the elasticsearch container failed to start because of `CrashLoopBackOff` error.
 After researching about it I found that the cause could be an outdated docker version. The docker I had was `Docker version 20.10.21, build 20.10.21-0ubuntu1~20.04.1`.
@@ -255,7 +255,7 @@ So I updated `/etc/sysctl.conf` and set `vm.max_map_count=262144` as recommended
 
 I redeployed the pod after updating `vm.max_map_count` and now both containers are running.
 
-![pod list](./images/pod%20list.png)
+![pod list](./images/pod%20list.png) <br>
 <small>The pod have been running for 14 minutes and have no problem.</small>
 
 
