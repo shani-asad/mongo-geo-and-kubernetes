@@ -9,7 +9,7 @@
 ### <b>A. What is Geospatial Query?</b>
 
 Geospatial Query is a feature in MongoDB allowing users to query geospatial data.
-GEospatial data can be stored in `GeoJSON` or `coordinate pairs` format.
+Geospatial data can be stored in `GeoJSON` or `coordinate pairs` format.
 
 GeoJSON is used to calculate geometry on an Earth-like sphere, while coordinate pairs is used to calculate distance between 2 points on a Euclidean plane.
 
@@ -155,7 +155,7 @@ result:
 
 ## 2. MongoDB and ElasticSearch deployment on Kubernetes using Kind
 
-Here are the steps I took to deploy MongoDB and ElsticSearch on Kubernetes using Kind:
+Here are the steps I took to deploy MongoDB and ElasticSearch on Kubernetes using Kind:
 
 <br>
 
@@ -176,7 +176,7 @@ kind create cluster --config kubernetes_files/kindconfig.yaml
 ```
 This creates a cluster with pre-built [kindest-node](https://hub.docker.com/r/kindest/node/) image.
 
-I'm using the following config when creating the cluster cluster.
+I'm using the following config when creating the cluster.
 ```yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -249,7 +249,7 @@ So I ran
  kubectl delete pod db-pod
  kubectl apply -f kubernetes_files/deploy.yaml 
 ```
-And now all containers in the pod are ready, but not for long. The ElasticSearch container keeps crashing. So I tried to run the container using Docker without Kubernetes. The container crashed too wher being run using Docker, and in the logs I found that the problem was that `vm.max_map_count` was too low. 
+And now all containers in the pod are ready, but not for long. The ElasticSearch container keeps crashing. So I tried to run the container using Docker without Kubernetes. The container crashed too when being run using Docker, and in the logs I found that the problem was that `vm.max_map_count` was too low. 
 
 So I updated `/etc/sysctl.conf` and set `vm.max_map_count=262144` as recommended in the logs. Now when I run the container using Docker and everything went well. 
 
