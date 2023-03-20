@@ -76,7 +76,7 @@ There are 4 operators on geospatial query:
 
 #### 1. Get data of schools with maximum distance of 4km from a coordinate pair <br>
 
-```JSON
+```
 {
   geometry: {
     $near: {
@@ -102,7 +102,7 @@ This query result in 4 records being retrieved, now I'll try to increase `$maxDi
 
 #### 2. Get data of schools with maximum distance of 8km from a coordinate pair <br>
 
-```JSON
+```
 {
   geometry: {
     $near: {
@@ -128,7 +128,7 @@ Now we get 7 records, more than before as expected.
 
 #### 3. Get data of schools that intersects with a `MultiPoint` <br>
 
-```JSON
+```
 {
   geometry: {
     $geoIntersects: {
@@ -274,9 +274,10 @@ For ElasticSearch:
 
 Here are the check results
 
-1. MongoDB
+1. MongoDB <br><br>
 ![mongodb http](./images/mongodb%20http.png)
 
+<br>
 
-2. ElasticSearch
+2. ElasticSearch <br><br>
 ![elasticsearch http](./images/elasticsearch%20http.png)
