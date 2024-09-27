@@ -14,7 +14,6 @@ Geospatial data can be stored in `GeoJSON` or `coordinate pairs` format.
 GeoJSON is used to calculate geometry on an Earth-like sphere, while coordinate pairs is used to calculate distance between 2 points on a Euclidean plane.
 
 <br>
-
 ### <b>B. How to do Geospatial Query in MongoDB?</b>
 
 First we need some data to work with, I'm using [School List GeoJSON from Calderdale Council](https://dataworks.calderdale.gov.uk/dataset/epwyy/schools-list). I inserted some of the data to MongoDB Atlas to try some queries on them.
